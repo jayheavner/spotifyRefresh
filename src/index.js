@@ -1,6 +1,13 @@
 const fastify = require('fastify')({ logger: true });
 
+import { connect } from 'mongoose';
+
 import { getToken } from './controller';
+
+// Connect to DB
+connect('mongodb://localhost/spotify', { useNewUrlParser: true })
+  .then(() => console.log('MongoDB connected...'))
+  .catch(err => console.log(err))
 
 fastify.get('/', async function(request, reply) {
   var data = await getToken();
