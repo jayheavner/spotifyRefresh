@@ -17,7 +17,7 @@ fastify.get('/', async function(request, reply) {
   reply.send(data);
 });
 
-fastify.listen(3000, err => {
+fastify.listen(3001, err => {
   if (err) throw err;
   fastify.log.info(`listening on ${fastify.server.address().port}`);
 });
