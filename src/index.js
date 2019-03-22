@@ -5,9 +5,12 @@ import { connect } from 'mongoose';
 import { getToken } from './controller';
 
 // Connect to DB
-connect('mongodb://localhost/spotify', { useNewUrlParser: true })
+connect(
+  'mongodb://192.168.1.10/spotify',
+  { useNewUrlParser: true }
+)
   .then(() => console.log('MongoDB connected...'))
-  .catch(err => console.log(err))
+  .catch(err => console.log(err));
 
 fastify.get('/', async function(request, reply) {
   var data = await getToken();

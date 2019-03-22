@@ -5,18 +5,23 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
+    "build": "babel src --out-dir dist",
+    "serve": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
     "@babel/node": "^7.2.2",
-    "@babel/preset-env": "^7.4.1",
+    "@babel/plugin-transform-runtime": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
     "nodemon": "^1.18.10"
   },
   "dependencies": {
+    "@babel/runtime": "^7.4.2",
     "axios": "^0.18.0",
     "dotenv": "^7.0.0",
     "fastify": "^2.1.0",

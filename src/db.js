@@ -19,5 +19,4 @@ export const update = async (tokens, refreshToken) => {
       }
     }
   );
-
 };
