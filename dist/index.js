@@ -22,6 +22,7 @@ var fastify = require('fastify')({
 }).catch(function (err) {
   return console.log(err);
 });
+fastify.register(require('fastify-cors'));
 fastify.get('/',
 /*#__PURE__*/
 function () {
@@ -52,7 +53,12 @@ function () {
     return _ref.apply(this, arguments);
   };
 }());
-fastify.listen(3000, function (err) {
-  if (err) throw err;
-  fastify.log.info("listening on ".concat(fastify.server.address().port));
+fastify.listen(3001, '::', function (err, address) {
+  if (err) {
+    fastify.log.error(err);
+    process.exit(1);
+  }
+
+  console.log('STARTING...with CORS?');
+  fastify.log.info("server listening on ".concat(address));
 });

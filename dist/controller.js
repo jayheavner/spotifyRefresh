@@ -59,19 +59,22 @@ function () {
           case 14:
             console.log("\n   Access Token is NOT valid, getching new tokens\n");
             refreshToken = tokens.refreshToken;
-            _context.next = 18;
+            console.log("\n   refreshToken = ".concat(refreshToken, "\n"));
+            _context.next = 19;
             return (0, _api.getRefreshToken)(refreshToken);
 
-          case 18:
+          case 19:
             tokens = _context.sent;
-            (0, _db.update)(tokens.data, refreshToken);
-            _context.next = 22;
+            console.log("\n   got tokens\n");
+            console.log("\n   doing DB update\n");
+            (0, _db.update)(tokens, refreshToken);
+            _context.next = 25;
             return getToken();
 
-          case 22:
+          case 25:
             return _context.abrupt("return", _context.sent);
 
-          case 23:
+          case 26:
           case "end":
             return _context.stop();
         }

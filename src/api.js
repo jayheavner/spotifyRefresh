@@ -1,8 +1,10 @@
 import axios from 'axios';
 import 'dotenv/config';
 
-export const getRefreshToken = refreshToken => {
-  return axios({
+export const getRefreshToken = async refreshToken => {
+  console.log(`\n   api.getRefreshToken()\n`);
+  console.log(`n ${process.env.clientId}:${process.env.clientSecret}`);
+  const r = await axios({
     method: 'post',
     url: 'https://accounts.spotify.com/api/token',
     params: {
@@ -18,6 +20,10 @@ export const getRefreshToken = refreshToken => {
         ).toString('base64')
     }
   });
+  console.log(`\n   AFTER CALL\n`);
+  console.dir(r.data);
+  console.log(`\n\n`);
+  return r.data;
 };
 
 // uses the current access token to get info about current user as a health check

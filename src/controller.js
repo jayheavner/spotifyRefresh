@@ -15,8 +15,11 @@ export const getToken = async () => {
   } else {
     console.log(`\n   Access Token is NOT valid, getching new tokens\n`);
     const refreshToken = tokens.refreshToken;
+    console.log(`\n   refreshToken = ${refreshToken}\n`);
     var tokens = await getRefreshToken(refreshToken);
-    update(tokens.data, refreshToken);
+    console.log(`\n   got tokens\n`);
+    console.log(`\n   doing DB update\n`);
+    update(tokens, refreshToken);
     return await getToken();
   }
 };
