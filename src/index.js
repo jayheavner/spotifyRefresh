@@ -1,4 +1,5 @@
 const fastify = require('fastify')({ logger: true });
+import 'dotenv/config';
 
 import { connect } from 'mongoose';
 
@@ -6,7 +7,7 @@ import { getToken } from './controller';
 
 // Connect to DB
 connect(
-  'mongodb://192.168.1.10/spotify',
+  `mongodb://${db_path}/spotify`,
   { useNewUrlParser: true }
 )
   .then(() => console.log('MongoDB connected...'))
