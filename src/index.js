@@ -5,6 +5,12 @@ import { connect } from 'mongoose';
 
 import { getToken } from './controller';
 
+console.log(process.env.NODE_ENV);
+
+const db_path = process.env.NODE_ENV === 'production'
+? process.env.db_path_prod
+: process.env.db_path_dev
+
 // Connect to DB
 connect(
   `mongodb://${db_path}/spotify`,
